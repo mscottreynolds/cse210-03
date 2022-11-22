@@ -27,18 +27,18 @@ The program must also meet the following requirements.
     - State: Parachute state.
   - Player: Represents the player.
 
-1 Director initializes jumper and player.
-  1 Jumper initializes Word and Parachute.
-    1 Word reads random word from file.
-    1 Parachute creates full parachute state.
-  1 Player initializes input and output for interacting with player.
-1 Displayes current jumper status
-  1 Gets input guess from player.
-  1 Updates jumper with players guess.
-  1 Checks jumper status.
-    1 If word guessed, then send game won message to player and quit.
-    1 If no parachute left, then send game over message to player and quit.
-    1 otherwise repeat loop at 'display current jumper status'
+1. Director initializes jumper and player.
+  1. Jumper initializes Word and Parachute.
+    1. Word reads random word from file.
+    1. Parachute creates full parachute state.
+  1. Player initializes input and output for interacting with player.
+1. Displayes current jumper status
+  1. Gets input guess from player.
+  1. Updates jumper with players guess.
+  1. Checks jumper status.
+    1. If word guessed, then send game won message to player and quit.
+    1. If no parachute left, then send game over message to player and quit.
+    1. otherwise repeat loop at 'display current jumper status'
 
 
 ## Getting Started
