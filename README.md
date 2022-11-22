@@ -22,10 +22,46 @@ The program must also meet the following requirements.
 
 ## Design
 ### Class diagram
+
+```
+Director
+--------
+- Jumper: Current word and status of jumper
+- Player: Player interface
++ start_game()
+
+Jumper
+------
+- Word: Current word.
+- State: Parachute state.
++ make_guess: Check letter to see if it is a match. 
++ display_status: Display the current game state.
++ is_won: Return true if game has been wone.
++ is_lost: Return true if game has been lost.
+
+Player
+------
++ get_guess: Player makes a guess at a letter.
+
+Word
+----
+- current_word
+- current_state
++ make_guess(): Make a guess at a letter
++ word_guessed(): Return true if word has been guessed.
+
+Parachute
+---------
+- parachute_list
++ remove_from_parachute(): Remove a line from parachute. Return true if not lost.
+
+
+```
+
 - Director: Controls game flow.
     - Jumper: Represents the current word and status of the jumper.
         - Word: Current word.
-        - State: Parachute state.
+        - Parachute: Parachute state.
     - Player: Represents the player.
 
 ### Sequence diagram.
