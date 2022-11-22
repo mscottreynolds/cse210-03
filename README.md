@@ -21,12 +21,14 @@ The program must also meet the following requirements.
 
 
 ## Design
+### Class diagram
 - Director: Controls game flow.
   - Jumper: Represents the current word and status of the jumper.
     - Word: Current word.
     - State: Parachute state.
   - Player: Represents the player.
 
+### Sequence diagram.
 1. Director initializes jumper and player.
   1. Jumper initializes Word and Parachute.
     1. Word reads random word from file.
