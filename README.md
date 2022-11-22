@@ -47,22 +47,17 @@ Word
 ----
 - current_word
 - current_state
++ create_word(): Create a new word.
 + make_guess(): Make a guess at a letter
 + word_guessed(): Return true if word has been guessed.
 
 Parachute
 ---------
 - parachute_list
++ create_parachute(): Initialize parachute.
 + remove_from_parachute(): Remove a line from parachute. Return true if not lost.
 
-
 ```
-
-- Director: Controls game flow.
-    - Jumper: Represents the current word and status of the jumper.
-        - Word: Current word.
-        - Parachute: Parachute state.
-    - Player: Represents the player.
 
 ### Sequence diagram.
 1. Director initializes jumper and player.
@@ -70,7 +65,7 @@ Parachute
         1. Word reads random word from file.
         2. Parachute creates full parachute state.
     2. Player initializes input and output for interacting with player.
-2. Displayes current jumper status
+2. Display current jumper status
     1. Gets input guess from player.
     2. Updates jumper with players guess.
     3. Checks jumper status.
