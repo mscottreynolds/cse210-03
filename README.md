@@ -26,43 +26,43 @@ The program must also meet the following requirements.
 ```
 Director
 --------
-- Jumper: Current word and status of jumper
-- Player: Player interface
-+ start_game()
+_jumper: Current word and status of jumper
+_player: Player interface
+start_game()
 
 Jumper
 ------
-- Word: Current word.
-- State: Parachute state.
-+ make_guess: Check letter to see if it is a match. 
-+ display_status: Display the current game state.
-+ is_won: Return true if game has been wone.
-+ is_lost: Return true if game has been lost.
+_word: Current word.
+_parachute: Parachute state.
+make_guess(): Check letter to see if it is a match. 
+display_status(): Display the current game state.
+is_won(): Return true if game has been wone.
+is_lost(): Return true if game has been lost.
 
 Player
 ------
-+ get_guess: Player makes a guess at a letter.
+new_player(): Initialize player. 
+get_guess(): Player makes a guess at a letter.
 
 Word
 ----
-- current_word
-- current_state
-+ create_word(): Create a new word.
-+ make_guess(): Make a guess at a letter
-+ word_guessed(): Return true if word has been guessed.
+_current_word
+_current_state
+create_word(): Create a new word.
+make_guess(): Make a guess at a letter
+word_guessed(): Return true if word has been guessed.
 
 Parachute
 ---------
-- parachute_list
-+ create_parachute(): Initialize parachute.
-+ remove_from_parachute(): Remove a line from parachute. Return true if not lost.
-
+_parachute_list
+create_parachute(): Initialize parachute.
+remove_from_parachute(): Remove a line from parachute. Return true if not lost.
 ```
 
 ### Sequence diagram.
 1. Director initializes jumper and player.
     1. Jumper initializes Word and Parachute.
-        1. Word reads random word from file.
+        1. Word reads random word from a list.
         2. Parachute creates full parachute state.
     2. Player initializes input and output for interacting with player.
 2. Display current jumper status
