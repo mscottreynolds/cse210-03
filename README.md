@@ -24,7 +24,7 @@ The program must also meet the following requirements.
 ### Class diagram
 
 ```
-Director
+Puzzle
 --------
 _jumper: Current word and status of jumper
 _player: Player interface
@@ -60,12 +60,12 @@ remove_from_parachute(): Remove a line from parachute. Return true if not lost.
 ```
 
 ### Sequence diagram.
-1. Director initializes jumper and player.
+1. Puzzle initializes jumper and player.
     1. Jumper initializes Word and Parachute.
         1. Word reads random word from a list.
         2. Parachute creates full parachute state.
     2. Player initializes input and output for interacting with player.
-2. Display current jumper status
+2. Puzzle displays current jumper status
     1. Gets input guess from player.
     2. Updates jumper with players guess.
     3. Checks jumper status.
