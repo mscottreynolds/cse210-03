@@ -1,66 +1,60 @@
 from game.terminal_service import TerminalService
-from game.hider import Hider
-from game.seeker import Seeker
+from game.jumper import Jumper
+from game.puzzle import Puzzle
+from game.player import Player
 
 
 class Director:
     """A person who directs the game. 
-    
     The responsibility of a Director is to control the sequence of play.
-
-    Attributes:
-        hider (Hider): The game's hider.
-        is_playing (boolean): Whether or not to keep playing.
-        seeker (Seeker): The game's seeker.
-        terminal_service: For getting and displaying information on the terminal.
     """
 
     def __init__(self):
-        """Constructs a new Director.
-        
-        Args:
-            self (Director): an instance of Director.
         """
-        self._hider = Hider()
+        Initialize jumper, puzzle, and player.
+        """
+        self._terminal = TerminalService()
+        self._puzzle = Puzzle()
+        self._jumper = Jumper()
+        self._player = Player()
         self._is_playing = True
-        self._seeker = Seeker()
-        self._terminal_service = TerminalService()
         
+
     def start_game(self):
-        """Starts the game by running the main game loop.
-        
-        Args:
-            self (Director): an instance of Director.
-        """
+        """Starts the game by running the main game loop."""
         while self._is_playing:
-            self._get_inputs()
+            self._display_state()
             self._do_updates()
-            self._do_outputs()
+            self._check_state()
 
-    def _get_inputs(self):
-        """Moves the seeker to a new location.
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        new_location = self._terminal_service.read_number("\nEnter a location [1-1000]: ")
-        self._seeker.move_location(new_location)
-        
+    def _display_state(self):
+        """Display the state of the puzzle and the jumper."""
+
+        terminal = self._terminal
+        self._puzzle.display_puzzle(terminal)
+        self._jumper.display_jumper(terminal)
+
+
     def _do_updates(self):
-        """Keeps watch on where the seeker is moving.
+        """Get a letter guess from the player and update puzzle and jumper."""
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        self._hider.watch_seeker(self._seeker)
-        
-    def _do_outputs(self):
-        """Provides a hint for the seeker to use.
+        puzzle = self._puzzle
+        letter = self._player.guess_a_letter(self._terminal)
+        puzzle.make_guess(letter)
+        if not puzzle.is_puzzle_solved():
+            self._jumper.cut_parachute()
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        hint = self._hider.get_hint()
-        self._terminal_service.write_text(hint)
-        if self._hider.is_found():
+
+    def _check_state(self):
+        """Check the state of the puzzle and parachute. Display results to player. Update is_playing flag."""
+
+        terminal = self._terminal
+        if self._puzzle.puzzle_solved():
+            terminal.write_text("You won!")
             self._is_playing = False
+        elif not self._jumper.is_parachute():
+            terminal.write_text("Sorry game lost.")
+            is_playing = False
+
+
