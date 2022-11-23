@@ -56,7 +56,7 @@ Parachute
 ---------
 _parachute_list
 create_parachute(): Initialize parachute.
-remove_from_parachute(): Remove a line from parachute. Return true if not lost.
+cut_parachute(): Cut a line from parachute. Return true if not lost.
 ```
 
 ### Sequence diagram.
@@ -69,7 +69,7 @@ remove_from_parachute(): Remove a line from parachute. Return true if not lost.
     1. Gets input guess from player.
     2. Updates jumper with players guess.
     3. Checks jumper status.
-        1. If word guessed, then send game won message to player and quit.
+        1. If word guessed, then display message to and quit.
         2. If no parachute left, then send game over message to player and quit.
         3. otherwise repeat loop at 'display current jumper status'
 
