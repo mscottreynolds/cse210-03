@@ -39,10 +39,9 @@ class Director:
     def _do_updates(self):
         """Get a letter guess from the player and update puzzle and jumper."""
 
-        puzzle = self._puzzle
         letter = self._player.guess_a_letter(self._terminal)
-        puzzle.make_guess(letter)
-        if not puzzle.is_puzzle_solved():
+        self._puzzle.make_guess(letter)
+        if not self._puzzle.is_puzzle_solved():
             self._jumper.cut_parachute()
 
 
@@ -55,6 +54,6 @@ class Director:
             self._is_playing = False
         elif not self._jumper.is_parachute():
             terminal.write_text("Sorry game lost.")
-            is_playing = False
+            self._is_playing = False
 
 
