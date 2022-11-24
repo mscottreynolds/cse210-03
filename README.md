@@ -65,8 +65,8 @@ guess_a_letter(): Player makes a guess at a letter.
     3. Updates puzzle with the guess.
     4. Checks the puzzle to see if it has been solved.
         1. If guessed, send a won message to the player.
-        2. If not guessed, send a cut parachute message to the jumper.
-            1. If no parachute is left, send a game lost message to the player.
+        2. If not guessed, send a cut parachute message to the jumper.
+            1. If no parachute is left, send a game lost message to the player.
     5. If the puzzle is not solved and still parachute left, repeat the loop.
 3. Game over.
 
