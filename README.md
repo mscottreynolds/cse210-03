@@ -56,20 +56,19 @@ guess_a_letter(): Player makes a guess at a letter.
 ### Sequence diagram.
 
 1. Director initializes puzzle, jumper, and player.
-     1. Puzzle reads a random word from a list.
-     2. Jumper creates a full parachute state.
-     3. Player initializes a new player.
+    1. Puzzle reads a random word from a list.
+    2. Jumper creates a full parachute state.
+    3. Player initializes a new player.
 2. Loop.
-     1. Director displays the current puzzle and jumper status.
-     2. Gets input guess from the player.
-     3. Updates puzzle with the guess.
-     4. Checks the puzzle to see if it has been solved.
-          1. If guessed, send a won message to the player.
-          2. If not guessed, send a cut parachute message to the jumper.
-              1. If no parachute is left, send a game lost message to the player.
-     5. If the puzzle is not solved and still parachute left, repeat the loop.
+    1. Director displays the current puzzle and jumper status.
+    2. Gets input guess from the player.
+    3. Updates puzzle with the guess.
+    4. Checks the puzzle to see if it has been solved.
+        1. If guessed, send a won message to the player.
+        2. If not guessed, send a cut parachute message to the jumper.
+            1. If no parachute is left, send a game lost message to the player.
+    5. If the puzzle is not solved and still parachute left, repeat the loop.
 3. Game over.
-
 
 ## Getting Started
 
