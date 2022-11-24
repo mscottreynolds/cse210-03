@@ -12,7 +12,7 @@ class Jumper:
 
 
     def __init__(self):
-        # Initialize the jumper and set values for parachute start and end.
+        """Initialize the jumper and set values for parachute start and end."""
 
         # These constants define the jumper and the parachute starting and ending line positions.
         self._jumper = [
@@ -37,14 +37,14 @@ class Jumper:
         
 
     def display_jumper(self, terminal):
-        # Display jumper, starting at the players cut position.
+        """Display jumper, starting at the players cut position."""
         for line in range(self._cut_position, len(self._jumper)):
             terminal.write_text(self._jumper[line])
         terminal.write_text('')
 
 
     def cut_parachute(self):
-        # 'Cut' a line from the parachute.
+        """Cut a line from the parachute."""
         if self._cut_position <= self._parachute_end:
             self._cut_position += 1
         
@@ -54,5 +54,5 @@ class Jumper:
 
 
     def is_parachute(self):
-        # Return true if there is still some parachute left.
+        """Return true if there is still some parachute left."""
         return self._cut_position <= self._parachute_end
