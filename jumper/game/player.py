@@ -11,5 +11,5 @@ class Player:
     def guess_a_letter(self, terminal):
         """Player guesses and returns a letter.
         """
-        letter = terminal.read_text("Guess a letter [a-z]")
+        letter = terminal.read_text("Guess a letter [a-z] ")
         return letter

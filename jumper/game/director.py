@@ -22,16 +22,18 @@ class Director:
 
     def start_game(self):
         """Starts the game by running the main game loop."""
+        self._display_state()
         while self._is_playing:
-            self._display_state()
             self._do_updates()
             self._check_state()
+            self._display_state()
 
 
     def _display_state(self):
         """Display the state of the puzzle and the jumper."""
 
         terminal = self._terminal
+        terminal.write_text('')
         self._puzzle.display_puzzle(terminal)
         self._jumper.display_jumper(terminal)
 
@@ -40,8 +42,7 @@ class Director:
         """Get a letter guess from the player and update puzzle and jumper."""
 
         letter = self._player.guess_a_letter(self._terminal)
-        self._puzzle.make_guess(letter)
-        if not self._puzzle.is_puzzle_solved():
+        if not self._puzzle.make_guess(letter):
             self._jumper.cut_parachute()
 
 
@@ -49,7 +50,7 @@ class Director:
         """Check the state of the puzzle and parachute. Display results to player. Update is_playing flag."""
 
         terminal = self._terminal
-        if self._puzzle.puzzle_solved():
+        if self._puzzle.is_puzzle_solved():
             terminal.write_text("You won!")
             self._is_playing = False
         elif not self._jumper.is_parachute():
